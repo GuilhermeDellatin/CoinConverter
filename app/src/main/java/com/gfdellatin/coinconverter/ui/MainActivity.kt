@@ -1,7 +1,8 @@
-package com.gfdellatin.coinconverter
+package com.gfdellatin.coinconverter.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gfdellatin.coinconverter.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
