@@ -1,7 +1,10 @@
 package com.gfdellatin.coinconverter.data.model
 
+import androidx.room.Entity
+
 typealias ExchangeResponse = HashMap<String, ExchangeResponseValue>
 
+@Entity(tableName = "tb_exchange")
 data class ExchangeResponseValue (
     val code: String,
     val codein: String,
