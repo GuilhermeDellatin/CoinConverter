@@ -1,6 +1,8 @@
 package com.gfdellatin.coinconverter.data.di
 
 import android.util.Log
+import com.gfdellatin.coinconverter.data.repository.CoinRepository
+import com.gfdellatin.coinconverter.data.repository.CoinRepositoryImpl
 import com.gfdellatin.coinconverter.data.services.AwesomeService
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -16,10 +18,10 @@ object DataModules {
     private const val HTTP_TAG = "OkHttp"
 
     fun load() {
-        loadKoinModules(networkingModules())
+        loadKoinModules(networkingModule() + repositoryModules())
     }
 
-    private fun networkingModules(): Module {
+    private fun networkingModule(): Module {
         return module {
             single {
                 val interceptor = HttpLoggingInterceptor {
@@ -42,7 +44,16 @@ object DataModules {
         }
     }
 
-    private inline fun <reified T> createService(client: OkHttpClient, factory: GsonConverterFactory): T {
+    private fun repositoryModules(): Module {
+        return module {
+            single<CoinRepository> { CoinRepositoryImpl(get()) }
+        }
+    }
+
+    private inline fun <reified T> createService(
+        client: OkHttpClient,
+        factory: GsonConverterFactory
+    ): T {
         return Retrofit.Builder()
             .baseUrl("https://economia.awesomeapi.com.br")
             .client(client)
