@@ -1,7 +1,6 @@
 package com.gfdellatin.coinconverter.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.gfdellatin.coinconverter.core.extensions.createDialog
@@ -18,14 +17,17 @@ class HistoryActivity : AppCompatActivity() {
     private val binding by lazy { ActivityHistoryBinding.inflate(layoutInflater) }
     private val dialog by lazy { createProgressDialog() }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         binding.rvHistory.adapter = adapter
         binding.rvHistory.addItemDecoration(
             DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL)
         )
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         bindObserver()
 

@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         bindAdapters()
         bindListeners()
         bindObserve()
+
+        setSupportActionBar(binding.toolbar)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -66,7 +69,8 @@ class MainActivity : AppCompatActivity() {
         binding.btnSave.setOnClickListener {
             val value = viewModel.state.value
             (value as? MainViewModel.State.Success)?.let {
-                viewModel.saveExchange(it.exchange)
+                val exchange = it.exchange.copy(bid = it.exchange.bid * binding.tilValue.text.toDouble())
+                viewModel.saveExchange(exchange)
             }
         }
     }
