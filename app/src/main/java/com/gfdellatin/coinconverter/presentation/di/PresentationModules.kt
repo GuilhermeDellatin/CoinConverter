@@ -1,5 +1,6 @@
 package com.gfdellatin.coinconverter.presentation.di
 
+import com.gfdellatin.coinconverter.presentation.HistoryViewModel
 import com.gfdellatin.coinconverter.presentation.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
@@ -13,7 +14,8 @@ object PresentationModules {
 
     private fun viewModelModules(): Module {
         return module {
-            viewModel { MainViewModel(get()) }
+            viewModel { MainViewModel(get(), get()) }
+            viewModel { HistoryViewModel(get()) }
         }
     }
 }

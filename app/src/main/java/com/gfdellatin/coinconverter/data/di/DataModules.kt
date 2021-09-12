@@ -48,7 +48,7 @@ object DataModules {
 
     private fun repositoryModules(): Module {
         return module {
-            single<CoinRepository> { CoinRepositoryImpl(get()) }
+            single<CoinRepository> { CoinRepositoryImpl(get(), get()) }
         }
     }
 
