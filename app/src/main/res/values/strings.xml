@@ -5,4 +5,6 @@
     <string name="To">Para:</string>
     <string name="convert">Converter</string>
     <string name="result">5,27</string>
+    <string name="historic_value">R$ 25,90</string>
+    <string name="coin1_to_coin2">Dólar Americano/Real Brasileiro</string>
 </resources>
