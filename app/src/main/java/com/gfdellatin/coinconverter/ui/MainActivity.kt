@@ -54,12 +54,20 @@ class MainActivity : AppCompatActivity() {
     private fun bindListeners() {
         binding.tilValue.editText?.doAfterTextChanged {
             binding.btnConverter.isEnabled = it != null && it.toString().isNotEmpty()
+            binding.btnSave.isEnabled = false
         }
 
         binding.btnConverter.setOnClickListener {
             it.hideSoftKeyboard()
             val search = "${binding.tilFrom.text}-${binding.tilTo.text}"
             viewModel.getExchangeValue(search)
+        }
+
+        binding.btnSave.setOnClickListener {
+            val value = viewModel.state.value
+            (value as? MainViewModel.State.Success)?.let {
+                viewModel.saveExchange(it.exchange)
+            }
         }
     }
 
@@ -74,12 +82,19 @@ class MainActivity : AppCompatActivity() {
                     }.show()
                 }
                 is MainViewModel.State.Success -> success(it)
+                MainViewModel.State.Saved -> {
+                    dialog.dismiss()
+                    createDialog {
+                        setMessage("Item salvo com sucesso!")
+                    }.show()
+                }
             }
         }
     }
 
     private fun success(it: MainViewModel.State.Success) {
         dialog.dismiss()
+        binding.btnSave.isEnabled = true
 
         val selectedCoin = binding.tilTo.text
         val coin = Coin.getByName(selectedCoin)
