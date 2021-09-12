@@ -7,4 +7,5 @@
     <string name="result">5,27</string>
     <string name="historic_value">R$ 25,90</string>
     <string name="coin1_to_coin2">Dólar Americano/Real Brasileiro</string>
+    <string name="history">Historico</string>
 </resources>
