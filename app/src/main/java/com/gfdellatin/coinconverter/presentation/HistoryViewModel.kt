@@ -1,6 +1,12 @@
 package com.gfdellatin.coinconverter.presentation
 
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.gfdellatin.coinconverter.data.model.ExchangeResponseValue
 import com.gfdellatin.coinconverter.domain.ListExchangeUseCase
 import kotlinx.coroutines.Dispatchers
@@ -14,8 +20,8 @@ class HistoryViewModel(
     private val listExchangeViewModel: ListExchangeUseCase
 ) : ViewModel(), LifecycleObserver {
 
-    private val _state = MutableLiveData<HistoryViewModel.State>()
-    val state: LiveData<HistoryViewModel.State> = _state
+    private val _state = MutableLiveData<State>()
+    val state: LiveData<State> = _state
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     private fun getExchanges() {
