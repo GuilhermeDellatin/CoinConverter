@@ -1,9 +1,6 @@
 package com.gfdellatin.coinconverter.data.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.gfdellatin.coinconverter.data.model.ExchangeResponseValue
 import kotlinx.coroutines.flow.Flow
 
@@ -15,4 +12,8 @@ interface ExchangeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(entity: ExchangeResponseValue)
+
+    @Query("DELETE FROM tb_exchange")
+    suspend fun deleteAll()
+
 }
