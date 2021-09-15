@@ -1,7 +1,6 @@
 package com.gfdellatin.coinconverter.core
 
 import kotlinx.coroutines.flow.Flow
-import java.lang.UnsupportedOperationException
 
 abstract class UseCase<Param, Source> {
     abstract suspend fun execute(param: Param): Flow<Source>
