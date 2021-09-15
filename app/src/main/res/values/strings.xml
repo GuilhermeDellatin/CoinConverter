@@ -9,4 +9,5 @@
     <string name="coin1_to_coin2">Dólar Americano/Real Brasileiro</string>
     <string name="history">Historico</string>
     <string name="save">Salvar</string>
+    <string name="delete_historic">Limpar Histórico</string>
 </resources>

@@ -4,9 +4,9 @@ import java.util.*
 
 enum class Coin(val locale: Locale) {
     USD(Locale.US),
-    CAD(Locale.CANADA),
+    EUR(Locale.UK),
     BRL(Locale("pt", "BR")),
-    ARS(Locale("es", "AR"));
+    BTC(Locale.US);
 
     companion object {
         fun getByName(name: String) = values().find { it.name == name} ?: BRL
