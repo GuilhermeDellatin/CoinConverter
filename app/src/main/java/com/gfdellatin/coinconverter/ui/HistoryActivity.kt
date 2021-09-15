@@ -28,10 +28,16 @@ class HistoryActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-
+        bindListeners()
         bindObserver()
 
         lifecycle.addObserver(viewModel)
+    }
+
+    private fun bindListeners() {
+        binding.btnDelete.setOnClickListener {
+            viewModel.deleteAll()
+        }
     }
 
     private fun bindObserver() {
@@ -51,4 +57,5 @@ class HistoryActivity : AppCompatActivity() {
             }
         }
     }
+
 }

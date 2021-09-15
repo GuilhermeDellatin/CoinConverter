@@ -1,13 +1,8 @@
 package com.gfdellatin.coinconverter.presentation
 
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.gfdellatin.coinconverter.data.model.ExchangeResponseValue
+import com.gfdellatin.coinconverter.data.repository.CoinRepository
 import com.gfdellatin.coinconverter.domain.ListExchangeUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -17,7 +12,8 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class HistoryViewModel(
-    private val listExchangeViewModel: ListExchangeUseCase
+    private val listExchangeViewModel: ListExchangeUseCase,
+    private val coinRepository: CoinRepository
 ) : ViewModel(), LifecycleObserver {
 
     private val _state = MutableLiveData<State>()
@@ -39,6 +35,12 @@ class HistoryViewModel(
                         _state.value = State.Success(it)
                     }
             }
+        }
+    }
+
+    fun deleteAll() {
+        viewModelScope.launch {
+            coinRepository.deleteAll()
         }
     }
 
