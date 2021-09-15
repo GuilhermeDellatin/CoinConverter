@@ -23,7 +23,7 @@ class CoinRepositoryImpl(
             val exchange = exchangeValue.values.first()
             emit(exchange)
         } catch (e: HttpException) {
-            val json = e.response()?.errorBody()?.string()
+            val json = e.response()?.errorBody()?.toString()
             val errorResponse = Gson().fromJson(json, ErrorResponse::class.java)
             throw RemoteException(errorResponse.message)
         }
@@ -37,4 +37,9 @@ class CoinRepositoryImpl(
     override fun list(): Flow<List<ExchangeResponseValue>> {
         return dao.findAll()
     }
+
+    override suspend fun deleteAll() {
+        dao.deleteAll()
+    }
+
 }
