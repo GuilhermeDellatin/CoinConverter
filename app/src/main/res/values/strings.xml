@@ -10,4 +10,6 @@
     <string name="history">Historico</string>
     <string name="save">Salvar</string>
     <string name="delete_historic">Limpar Histórico</string>
+    <string name="symbol_project">Logo do projeto</string>
+    <string name="coin_converter_splash">CoinConverter</string>
 </resources>
