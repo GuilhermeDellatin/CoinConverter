@@ -4,9 +4,6 @@ Projeto de Conversão de Moedas e Câmbio do Bootcamp Carrefour Android Dio
 # Objetivos
 Desenvolver uma aplicação para fazer conversão de moedas.
 
-# O que foi feito além
-Inclusão da funcionalidade Limpar Historico, SplashScreen, moedas extras e temas personalizados
-
 # API de Cotação e Cambio de Moedas:
 - 👨‍💻 Link da documentação: https://docs.awesomeapi.com.br/api-de-moedas
 
