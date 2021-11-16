@@ -14,6 +14,6 @@ Desenvolver uma aplicação para fazer conversão de moedas.
 - 👨‍💻	Room Database para salvar e excluir os dados : https://developer.android.com/training/data-storage/room
 - 👨‍💻	Coroutines : https://developer.android.com/kotlin/coroutines
 - 👨‍💻 Lifecycle com View Model, e Kotlin Extensions : https://developer.android.com/topic/libraries/architecture/lifecycle?hl=pt-Br#lc
-
+- Testes de ui com Espresso : https://developer.android.com/training/testing/espresso
 #
 ![Loom-_-CoinExchange-App](https://user-images.githubusercontent.com/54901574/133707758-f93b30eb-370d-41bc-9846-2cf37af285b2.gif)
